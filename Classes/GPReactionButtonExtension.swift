@@ -12,6 +12,8 @@ import RxSwift
 
 public extension Reactive where Base: ReactionButton {
     
+    // MARK: reactive function
+    
     //    var reaction: Binder<Reaction?> {
     //        return Binder(self.base) { $0.reaction = $1 ?? $0.reaction }
     //    }
@@ -24,5 +26,17 @@ public extension Reactive where Base: ReactionButton {
         })
     }
     
+}
+
+public extension ReactionButton {
+    // MARK: convenience method
+    static func gapo() -> ReactionButton {
+        let reactionSelector = ReactionSelector()
+        reactionSelector.reactions = Reaction.gapo.all
+        let reactionButton = ReactionButton()
+        reactionButton.reactionSelector = reactionSelector
+        reactionButton.config = ReactionButtonConfig() { $0.alignment = .centerLeft }
+        return reactionButton
+    }
 }
 

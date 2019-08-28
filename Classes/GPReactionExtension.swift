@@ -12,7 +12,7 @@ public enum GapoReactionType: String {
     case like = "gapo-like"
     case love = "gapo-love"
     case haha = "gapo-haha"
-    case wow = "gapo-wow"
+    case sock = "gapo-sock"
     case sad = "gapo-sad"
     case angry = "gapo-angry"
     case pikachu = "sap--pikachu"
@@ -33,8 +33,8 @@ extension Reaction {
             return reactionWithId(.haha)
         }
         
-        public static var wow: Reaction {
-            return reactionWithId(.wow)
+        public static var sock: Reaction {
+            return reactionWithId(.sock)
         }
         
         public static var sad: Reaction {
@@ -45,38 +45,32 @@ extension Reaction {
             return reactionWithId(.angry)
         }
         
-        public static let all: [Reaction] = [gapo.like, gapo.love, gapo.haha, gapo.wow, gapo.sad, gapo.angry]
+        public static let all: [Reaction] = [gapo.like, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
         
         // MARK: - Convenience Methods
         public static func reactionWithId(_ type: GapoReactionType) -> Reaction {
             var color: UIColor = .black
-            var title: String = ""
+            var title: String = "Thích"
             var icon: UIImage? = nil
             
             switch type {
             case .like:
                 color = UIColor(r: 111, g: 190, b: 68)
-                title = "Like"
                 break
             case .love:
                 color = UIColor(r: 227, g: 61, b: 81)
-                title = "Love"
                 break
             case .haha:
                 color = UIColor(r: 252, g: 224, b: 57)
-                title = "Haha"
                 break
-            case .wow:
+            case .sock:
                 color = UIColor(r: 218, g: 60, b: 15)
-                title = "Wow"
                 break
             case .sad:
                 color = UIColor(r: 212, g: 142, b: 21)
-                title = "Sad"
                 break
             case .angry:
                 color = UIColor(r: 167, g: 130, b: 189)
-                title = "Angry"
                 break
             case .pikachu:
                 color = UIColor(r: 167, g: 130, b: 189)
@@ -94,7 +88,28 @@ extension Reaction {
         
         private static func imageWithName(_ name: String) -> UIImage! {
             let imageName = String(name[name.index(name.startIndex, offsetBy: 5)...])
-            return UIImage(named: imageName)!
+            let bundlePath = GPBundle.getBundle().path(forResource: imageName, ofType: "png")
+            return UIImage(named: bundlePath!)!
+        }
+    }
+    
+    public func getRequestCode() -> Int {
+        guard let type = GapoReactionType(rawValue: id) else { return -1 }
+        switch type {
+        case .like:
+            return 1
+        case .love:
+            return 2
+        case .haha:
+            return 3
+        case .sock:
+            return 4
+        case .sad:
+            return 5
+        case .angry:
+            return 6
+        default:
+            return -1
         }
     }
 }
