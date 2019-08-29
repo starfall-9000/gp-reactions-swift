@@ -50,27 +50,33 @@ extension Reaction {
         // MARK: - Convenience Methods
         public static func reactionWithId(_ type: GapoReactionType) -> Reaction {
             var color: UIColor = .black
-            var title: String = "Thích"
+            var title: String = ""
             var icon: UIImage? = nil
             
             switch type {
             case .like:
                 color = UIColor(r: 111, g: 190, b: 68)
+                title = "Thích"
                 break
             case .love:
                 color = UIColor(r: 227, g: 61, b: 81)
+                title = "Yêu"
                 break
             case .haha:
                 color = UIColor(r: 252, g: 224, b: 57)
+                title = "Haha"
                 break
             case .sock:
                 color = UIColor(r: 218, g: 60, b: 15)
+                title = "Woa"
                 break
             case .sad:
                 color = UIColor(r: 212, g: 142, b: 21)
+                title = "Buồn"
                 break
             case .angry:
                 color = UIColor(r: 167, g: 130, b: 189)
+                title = "Giận"
                 break
             case .pikachu:
                 color = UIColor(r: 167, g: 130, b: 189)
