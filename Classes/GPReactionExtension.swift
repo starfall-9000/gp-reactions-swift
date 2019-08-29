@@ -92,7 +92,7 @@ extension Reaction {
             return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithName(type.rawValue))
         }
         
-        private static func imageWithName(_ name: String) -> UIImage! {
+        public static func imageWithName(_ name: String) -> UIImage! {
             let imageName = String(name[name.index(name.startIndex, offsetBy: 5)...])
             let bundlePath = GPBundle.getBundle().path(forResource: imageName, ofType: "png")
             return UIImage(named: bundlePath!)!
