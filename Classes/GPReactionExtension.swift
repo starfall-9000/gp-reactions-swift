@@ -47,6 +47,10 @@ extension Reaction {
         
         public static let all: [Reaction] = [gapo.like, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
         
+        public static func reactionWithStatus(status: String) -> Reaction {
+            return reactionWithId(GapoReactionType(rawValue: "gapo-" + status) ?? .like)
+        }
+        
         // MARK: - Convenience Methods
         public static func reactionWithId(_ type: GapoReactionType) -> Reaction {
             var color: UIColor = .black
@@ -119,23 +123,27 @@ extension Reaction {
         }
     }
     
-    public func getReactStatus() -> String {
-        guard let type = GapoReactionType(rawValue: id) else { return "" }
-        switch type {
-        case .like:
-            return "like"
-        case .love:
-            return "love"
-        case .haha:
-            return "haha"
-        case .sock:
-            return "sock"
-        case .sad:
-            return "sad"
-        case .angry:
-            return "angry"
+    public static func getReactionType(code: Int) -> GapoReactionType {
+        switch code {
+        case 1:
+            return .like
+        case 2:
+            return .love
+        case 3:
+            return .haha
+        case 4:
+            return .sock
+        case 5:
+            return .sad
+        case 6:
+            return .angry
         default:
-            return ""
+            return .like
         }
+    }
+
+    
+    public func getReactStatus() -> String {
+        return String(id[id.index(id.startIndex, offsetBy: 5)...])
     }
 }
