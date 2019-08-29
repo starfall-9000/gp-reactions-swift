@@ -112,4 +112,24 @@ extension Reaction {
             return -1
         }
     }
+    
+    public func getReactStatus() -> String {
+        guard let type = GapoReactionType(rawValue: id) else { return "" }
+        switch type {
+        case .like:
+            return "like"
+        case .love:
+            return "love"
+        case .haha:
+            return "haha"
+        case .sock:
+            return "sock"
+        case .sad:
+            return "sad"
+        case .angry:
+            return "angry"
+        default:
+            return ""
+        }
+    }
 }
