@@ -32,6 +32,9 @@ public extension ReactionButton {
     // MARK: convenience method
     static func gapo() -> ReactionButton {
         let reactionSelector = ReactionSelector()
+        reactionSelector.config = ReactionSelectorConfig {
+            $0.iconSize = 40
+        }
         reactionSelector.reactions = Reaction.gapo.all
         let reactionButton = ReactionButton()
         reactionButton.reactionSelector = reactionSelector
