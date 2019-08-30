@@ -9,6 +9,7 @@ import Reactions
 import DDMvvm
 
 public enum GapoReactionType: String {
+    case unlike = "gapo-unlike"
     case like = "gapo-like"
     case love = "gapo-love"
     case haha = "gapo-haha"
@@ -21,6 +22,10 @@ public enum GapoReactionType: String {
 
 extension Reaction {
     public struct gapo {
+        public static var unlike: Reaction {
+            return reactionWithId(.unlike)
+        }
+        
         public static var like: Reaction {
             return reactionWithId(.like)
         }
@@ -45,7 +50,7 @@ extension Reaction {
             return reactionWithId(.angry)
         }
         
-        public static let all: [Reaction] = [gapo.like, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
+        public static let all: [Reaction] = [gapo.unlike, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
         
         public static func reactionWithStatus(status: String) -> Reaction {
             return reactionWithId(GapoReactionType(rawValue: "gapo-" + status) ?? .like)
@@ -59,6 +64,11 @@ extension Reaction {
             var alterIcon: UIImage? = nil
             
             switch type {
+            case .unlike:
+                color = UIColor(r: 111, g: 190, b: 68)
+                title = "Thích"
+                icon = imageWithName("gapo-like")
+                alterIcon = alterImageWithName(type.rawValue)
             case .like:
                 color = UIColor(r: 111, g: 190, b: 68)
                 title = "Thích"
@@ -114,6 +124,8 @@ extension Reaction {
     public func getRequestCode() -> Int {
         guard let type = GapoReactionType(rawValue: id) else { return -1 }
         switch type {
+        case .unlike:
+            return 1
         case .like:
             return 1
         case .love:
