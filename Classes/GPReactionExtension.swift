@@ -65,33 +65,33 @@ extension Reaction {
             
             switch type {
             case .unlike:
-                color = UIColor(r: 111, g: 190, b: 68)
+                color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
                 icon = imageWithName("gapo-like")
                 alterIcon = alterImageWithName(type.rawValue)
             case .like:
-                color = UIColor(r: 111, g: 190, b: 68)
+                color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
                 alterIcon = alterImageWithName(type.rawValue)
                 break
             case .love:
-                color = UIColor(r: 227, g: 61, b: 81)
+                color = UIColor(hexString: "#F87376")!
                 title = "Yêu"
                 break
             case .haha:
-                color = UIColor(r: 252, g: 224, b: 57)
+                color = UIColor(hexString: "#F7D925")!
                 title = "Haha"
                 break
             case .sock:
-                color = UIColor(r: 218, g: 60, b: 15)
+                color = UIColor(hexString: "#DA3C0F")!
                 title = "Woa"
                 break
             case .sad:
-                color = UIColor(r: 212, g: 142, b: 21)
+                color = UIColor(hexString: "#D48E15")!
                 title = "Buồn"
                 break
             case .angry:
-                color = UIColor(r: 167, g: 130, b: 189)
+                color = UIColor(hexString: "#5168D7")!
                 title = "Giận"
                 break
             case .pikachu:
