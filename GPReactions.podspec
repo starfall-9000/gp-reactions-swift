@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "GPReactions"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Useful reactions swift library such as like, love,..."
 
   # This description is used to generate tags and improve search results.
@@ -135,7 +135,7 @@ Useful reactions library using for like, love,... written by swift
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "DDMvvm"
+  s.dependency "DTMvvm"
   s.dependency "Reactions"
 
 end

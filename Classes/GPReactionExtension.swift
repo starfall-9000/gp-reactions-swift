@@ -6,7 +6,7 @@
 //
 
 import Reactions
-import DDMvvm
+import DTMvvm
 
 public enum GapoReactionType: String {
     case unlike = "gapo-unlike"
