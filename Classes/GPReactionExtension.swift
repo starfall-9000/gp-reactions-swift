@@ -67,7 +67,7 @@ extension Reaction {
             case .unlike:
                 color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
-                icon = imageWithName("gapo-like")
+                icon = imageWithType(.like)
             case .like:
                 color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
@@ -104,18 +104,24 @@ extension Reaction {
                 alterIcon = UIImage.apngImageWithName("pinwheel")
             }
             
-            return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithName(type.rawValue), alternativeIcon: alterIcon ?? alterImageWithName(type.rawValue))
+            return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithType(type), alternativeIcon: alterIcon ?? alterImageWithType(type))
         }
         
-        public static func imageWithName(_ name: String) -> UIImage! {
-            let imageName = String(name[name.index(name.startIndex, offsetBy: 5)...])
+        public static func imageWithType(_ type: GapoReactionType) -> UIImage! {
+            let imageName = getReactStatus(type)
             return UIImage.apngImageWithName(imageName)
         }
         
-        public static func alterImageWithName(_ name: String) -> UIImage! {
-            let imageName = String(name[name.index(name.startIndex, offsetBy: 5)...]) + "_alter"
+        public static func alterImageWithType(_ type: GapoReactionType) -> UIImage! {
+            let imageName = getReactStatus(type) + "_alter"
             let bundlePath = GPBundle.getBundle().path(forResource: imageName, ofType: "png")
             return UIImage(named: bundlePath!)!
+        }
+        
+        public static func getReactStatus(_ type: GapoReactionType) -> String {
+            let name = type.rawValue
+            let status = String(name[name.index(name.startIndex, offsetBy: 5)...])
+            return status
         }
     }
     
@@ -162,6 +168,6 @@ extension Reaction {
 
     
     public func getReactStatus() -> String {
-        return String(id[id.index(id.startIndex, offsetBy: 5)...])
+        return Reaction.gapo.getReactStatus(GapoReactionType(rawValue: id)!)
     }
 }
