@@ -68,11 +68,9 @@ extension Reaction {
                 color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
                 icon = imageWithName("gapo-like")
-                alterIcon = alterImageWithName(type.rawValue)
             case .like:
                 color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
-                alterIcon = alterImageWithName(type.rawValue)
                 break
             case .love:
                 color = UIColor(hexString: "#F87376")!
@@ -103,15 +101,15 @@ extension Reaction {
                 color = UIColor(r: 167, g: 130, b: 189)
                 title = "Pinwheel"
                 icon = UIImage.apngImageWithName("pinwheel")
+                alterIcon = UIImage.apngImageWithName("pinwheel")
             }
             
-            return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithName(type.rawValue), alternativeIcon: alterIcon)
+            return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithName(type.rawValue), alternativeIcon: alterIcon ?? alterImageWithName(type.rawValue))
         }
         
         public static func imageWithName(_ name: String) -> UIImage! {
             let imageName = String(name[name.index(name.startIndex, offsetBy: 5)...])
-            let bundlePath = GPBundle.getBundle().path(forResource: imageName, ofType: "png")
-            return UIImage(named: bundlePath!)!
+            return UIImage.apngImageWithName(imageName)
         }
         
         public static func alterImageWithName(_ name: String) -> UIImage! {
