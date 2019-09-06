@@ -51,6 +51,7 @@ extension Reaction {
         }
         
         public static let all: [Reaction] = [gapo.unlike, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
+        public static let main: [Reaction] = [gapo.like, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
         
         public static func reactionWithStatus(status: String) -> Reaction {
             return reactionWithId(GapoReactionType(rawValue: "gapo-" + status) ?? .like)
@@ -169,5 +170,20 @@ extension Reaction {
     
     public func getReactStatus() -> String {
         return Reaction.gapo.getReactStatus(GapoReactionType(rawValue: id)!)
+    }
+    
+    public static func sortedReactions(_ reactions: [Reaction]) -> [Reaction] {
+        var baseReaction = Reaction.gapo.main
+        baseReaction.insert(Reaction.gapo.unlike, at: 0)
+        var sorted: [Reaction] = []
+        let listAvailabelType = reactions.map { (reaction) -> String in
+            return reaction.id
+        }
+        for reaction in baseReaction {
+            if (listAvailabelType.contains(reaction.id)) {
+                sorted.append(reaction)
+            }
+        }
+        return sorted
     }
 }
