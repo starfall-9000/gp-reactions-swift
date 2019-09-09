@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'GPReactionsExample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for GPReactionsExample
+  pod 'Reactions', :git => 'https://github.com/starfall-9000/Reactions.git'
+  pod 'GPReactions', :path => '../'
+
+end
