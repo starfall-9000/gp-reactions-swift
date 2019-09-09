@@ -28,6 +28,11 @@ class GPBundle {
         guard let podBundle = Bundle(url: url) else { return bundle }
         return podBundle
     }
+    
+    class func imageFromBundle(imageName: String, ext: String) -> UIImage! {
+        let bundlePath = getBundle().path(forResource: imageName, ofType: ext)
+        return UIImage(named: bundlePath!)!
+    }
 }
 
 extension UIImage {

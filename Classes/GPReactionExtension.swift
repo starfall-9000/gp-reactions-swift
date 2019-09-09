@@ -63,15 +63,18 @@ extension Reaction {
             var title: String = ""
             var icon: UIImage? = nil
             var alterIcon: UIImage? = nil
+            var summaryIcon: UIImage? = nil
             
             switch type {
             case .unlike:
                 color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
                 icon = imageWithType(.like)
+                summaryIcon = summaryImageWithType(.like)
             case .like:
                 color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
+                summaryIcon = summaryImageWithType(.like)
                 break
             case .love:
                 color = UIColor(hexString: "#F87376")!
@@ -105,7 +108,7 @@ extension Reaction {
                 alterIcon = UIImage.apngImageWithName("pinwheel")
             }
             
-            return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithType(type), alternativeIcon: alterIcon ?? alterImageWithType(type))
+            return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithType(type), alternativeIcon: alterIcon ?? alterImageWithType(type), summaryIcon: summaryIcon)
         }
         
         public static func imageWithType(_ type: GapoReactionType) -> UIImage! {
@@ -115,8 +118,12 @@ extension Reaction {
         
         public static func alterImageWithType(_ type: GapoReactionType) -> UIImage! {
             let imageName = getReactStatus(type) + "_alter"
-            let bundlePath = GPBundle.getBundle().path(forResource: imageName, ofType: "png")
-            return UIImage(named: bundlePath!)!
+            return GPBundle.imageFromBundle(imageName: imageName, ext: "png")
+        }
+        
+        public static func summaryImageWithType(_ type: GapoReactionType) -> UIImage! {
+            let imageName = getReactStatus(type) + "_summary"
+            return GPBundle.imageFromBundle(imageName: imageName, ext: "png")
         }
         
         public static func getReactStatus(_ type: GapoReactionType) -> String {
