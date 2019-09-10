@@ -1,0 +1,6 @@
+framework module GPReactions {
+  umbrella header "GPReactions-umbrella.h"
+
+  export *
+  module * { export * }
+}
