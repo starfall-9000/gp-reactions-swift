@@ -21,7 +21,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-class GPBundle {
+class GPReactionsBundle {
     class func getBundle() -> Bundle {
         let bundle = Bundle(for: self)
         guard let url = bundle.url(forResource: "GPReactions", withExtension: "bundle") else { return bundle }
@@ -48,7 +48,7 @@ extension UIImage {
     }
     
     public class func animatedData(name: String, extension ext: String) -> Data? {
-        guard let bundleURL = GPBundle.getBundle().url(forResource: name, withExtension: ext) else {
+        guard let bundleURL = GPReactionsBundle.getBundle().url(forResource: name, withExtension: ext) else {
             print("SwiftGif: This image named \"\(name).\(ext)\" does not exist")
             return nil
         }

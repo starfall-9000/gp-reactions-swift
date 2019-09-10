@@ -118,12 +118,12 @@ extension Reaction {
         
         public static func alterImageWithType(_ type: GapoReactionType) -> UIImage! {
             let imageName = getReactStatus(type) + "_alter"
-            return GPBundle.imageFromBundle(imageName: imageName, ext: "png")
+            return GPReactionsBundle.imageFromBundle(imageName: imageName, ext: "png")
         }
         
         public static func summaryImageWithType(_ type: GapoReactionType) -> UIImage! {
             let imageName = getReactStatus(type) + "_summary"
-            return GPBundle.imageFromBundle(imageName: imageName, ext: "png")
+            return GPReactionsBundle.imageFromBundle(imageName: imageName, ext: "png")
         }
         
         public static func getReactStatus(_ type: GapoReactionType) -> String {
