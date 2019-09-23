@@ -29,9 +29,11 @@ class GPReactionsBundle {
         return podBundle
     }
     
-    class func imageFromBundle(imageName: String, ext: String) -> UIImage! {
-        let bundlePath = getBundle().path(forResource: imageName, ofType: ext)
-        return UIImage(named: bundlePath!)!
+    class func imageFromBundle(imageName: String, ext: String) -> UIImage? {
+        if let bundlePath = getBundle().path(forResource: imageName, ofType: ext) {
+            return UIImage(named: bundlePath)
+        }
+        return nil
     }
 }
 
