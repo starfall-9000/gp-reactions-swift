@@ -108,20 +108,25 @@ extension Reaction {
                 alterIcon = UIImage.apngImageWithName("pinwheel")
             }
             
-            return Reaction(id: type.rawValue, title: title, color: color, icon: icon ?? imageWithType(type), alternativeIcon: alterIcon ?? alterImageWithType(type), summaryIcon: summaryIcon)
+            return Reaction(id: type.rawValue,
+                            title: title,
+                            color: color,
+                            icon: icon ?? imageWithType(type)!,
+                            alternativeIcon: alterIcon ?? alterImageWithType(type),
+                            summaryIcon: summaryIcon ?? summaryImageWithType(type))
         }
         
-        public static func imageWithType(_ type: GapoReactionType) -> UIImage! {
+        public static func imageWithType(_ type: GapoReactionType) -> UIImage? {
             let imageName = getReactStatus(type)
             return UIImage.apngImageWithName(imageName)
         }
         
-        public static func alterImageWithType(_ type: GapoReactionType) -> UIImage! {
+        public static func alterImageWithType(_ type: GapoReactionType) -> UIImage? {
             let imageName = getReactStatus(type) + "_alter"
             return GPReactionsBundle.imageFromBundle(imageName: imageName, ext: "png")
         }
         
-        public static func summaryImageWithType(_ type: GapoReactionType) -> UIImage! {
+        public static func summaryImageWithType(_ type: GapoReactionType) -> UIImage? {
             let imageName = getReactStatus(type) + "_summary"
             return GPReactionsBundle.imageFromBundle(imageName: imageName, ext: "png")
         }
