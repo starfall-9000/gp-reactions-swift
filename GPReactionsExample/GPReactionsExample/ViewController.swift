@@ -31,6 +31,17 @@ class ViewController: UIViewController {
             NSLog("react-status: %@", self.reactionButton.reaction.getReactStatus())
             NSLog("react-code: %d", reaction?.getRequestCode() ?? -1)
         }) => disposeBag
+        
+        let reactionSummary = ReactionSummary()
+        reactionSummary.reactions = Reaction.gapo.main
+        reactionSummary.config = ReactionSummaryConfig() {
+            $0.iconMarging = 8
+            $0.spacing = 4
+        }
+        view.addSubview(reactionSummary)
+        reactionSummary.autoPinEdge(toSuperviewEdge: .top, withInset: 300)
+        reactionSummary.autoAlignAxis(toSuperviewAxis: .vertical)
+        reactionSummary.autoSetDimensions(to: .init(width: 350, height: 40))
     }
     
     @objc func handleTapButton(_ sender: ReactionButton) {
