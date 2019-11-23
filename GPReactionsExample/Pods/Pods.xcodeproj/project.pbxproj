@@ -119,6 +119,7 @@
 		3211F254662B1430A663D438BBD8450A /* StartWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928E01E87937B044C0D02A9A618E31A /* StartWith.swift */; };
 		3241D65ECFD7B8C9EDE22C7332EC66C8 /* PublishRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B8BB4792D5C1E95599D65B37FFC7B0 /* PublishRelay.swift */; };
 		32AD45E4141843240AA5A1F4EDA8C172 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0EC41DC593098EEAFF455D862C295F /* Reaction.swift */; };
+		32FD9C772388BD8400625420 /* GPReactionSummaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9C762388BD8400625420 /* GPReactionSummaryExtension.swift */; };
 		330EDF3321FF9F0C2FBFC10CBA072946 /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122715631FF0AC3194E7BACBC9A2A3E /* ObservableType.swift */; };
 		332F498B280452BED607D6339EF33D92 /* UITabBarItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7CFBB3B8A3C9724F171F2C8987EEB2 /* UITabBarItem+Rx.swift */; };
 		34E80B20E789083CE1BE4E5EB1F45AC1 /* Result-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5014895DEA9ED5B5BAAFF3D6EA636E3 /* Result-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -928,6 +929,7 @@
 		32C3ABB4B902F5FE828B9BE26255F327 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+Extensions.swift"; path = "RxSwift/ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		32C7DDC259BA3434B2FFD003F48C356F /* Single+Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Single+Response.swift"; path = "DTMvvm/Classes/Extensions/ReactiveExtensions/Single+Response.swift"; sourceTree = "<group>"; };
 		32FAEC6C3FF56BAAC4877F66BEB36516 /* Range.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Range.swift; path = RxSwift/Observables/Range.swift; sourceTree = "<group>"; };
+		32FD9C762388BD8400625420 /* GPReactionSummaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GPReactionSummaryExtension.swift; path = Classes/GPReactionSummaryExtension.swift; sourceTree = "<group>"; };
 		336DDDA91454DDE844A1874659F38390 /* sock_summary@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "sock_summary@3x.png"; path = "Resources/sock_summary@3x.png"; sourceTree = "<group>"; };
 		33A20C52C83B8FCC4D5BC31EF0883E32 /* RxCocoa-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RxCocoa-dummy.m"; sourceTree = "<group>"; };
 		33ECE2193F1E64D58929CD2B9BF02CDA /* Action-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Action-umbrella.h"; sourceTree = "<group>"; };
@@ -2476,6 +2478,7 @@
 			children = (
 				2129A043A82C9EC8FF6EFE96781F20F3 /* GPReactionButtonExtension.swift */,
 				085D0758810536AB977CD9EA1EB0DFFC /* GPReactionExtension.swift */,
+				32FD9C762388BD8400625420 /* GPReactionSummaryExtension.swift */,
 				9CFEBAE48D565169E1E6BA403B8BDA4C /* GPUIImageExtension.swift */,
 				742A46E57EE970217A69E8AAC848A7F7 /* Pod */,
 				3B458FAEE8990F0650D91273E213F22B /* Resources */,
@@ -3251,6 +3254,7 @@
 				2985469BB62CFBE6DF848B135FF1C982 /* GPReactionExtension.swift in Sources */,
 				B35456DE85EDACEA1BA7AA4407B65BF8 /* GPReactions-dummy.m in Sources */,
 				F871E1708558ABEBFD649D04B4BE9E26 /* GPUIImageExtension.swift in Sources */,
+				32FD9C772388BD8400625420 /* GPReactionSummaryExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
