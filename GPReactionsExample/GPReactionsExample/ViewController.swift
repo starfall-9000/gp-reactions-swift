@@ -42,6 +42,10 @@ class ViewController: UIViewController {
         reactionSummary.autoPinEdge(toSuperviewEdge: .top, withInset: 300)
         reactionSummary.autoAlignAxis(toSuperviewAxis: .vertical)
         reactionSummary.autoSetDimensions(to: .init(width: 350, height: 40))
+        reactionSummary.text = "150k"
+        let listReaction = ["1": true, "2": false, "3": true, "4": false, "6": true]
+        reactionSummary.mapListReactions(listReaction)
+        reactionSummary.addNewReaction(Reaction.gapo.love, reactCount: 3)
     }
     
     @objc func handleTapButton(_ sender: ReactionButton) {
