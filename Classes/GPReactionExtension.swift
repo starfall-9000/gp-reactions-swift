@@ -11,13 +11,12 @@ import DTMvvm
 public enum GapoReactionType: String {
     case unlike = "gapo-unlike"
     case like = "gapo-like"
+    case whitelike = "gapo-whitelike"
     case love = "gapo-love"
     case haha = "gapo-haha"
     case sock = "gapo-sock"
     case sad = "gapo-sad"
     case angry = "gapo-angry"
-    case pikachu = "sap--pikachu"
-    case pinwheel = "sap--pinwheel"
 }
 
 extension Reaction {
@@ -28,6 +27,10 @@ extension Reaction {
         
         public static var like: Reaction {
             return reactionWithId(.like)
+        }
+        
+        public static var whiteLike: Reaction {
+            return reactionWithId(.whitelike)
         }
         
         public static var love: Reaction {
@@ -52,6 +55,7 @@ extension Reaction {
         
         public static let all: [Reaction] = [gapo.unlike, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
         public static let main: [Reaction] = [gapo.like, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
+        public static let dark: [Reaction] = [gapo.whiteLike, gapo.love, gapo.haha, gapo.sock, gapo.sad, gapo.angry]
         
         public static func reactionWithStatus(status: String) -> Reaction {
             return reactionWithId(GapoReactionType(rawValue: "gapo-" + status) ?? .like)
@@ -62,7 +66,6 @@ extension Reaction {
             var color: UIColor = .black
             var title: String = ""
             var icon: UIImage? = nil
-            var alterIcon: UIImage? = nil
             var summaryIcon: UIImage? = nil
             
             switch type {
@@ -74,6 +77,12 @@ extension Reaction {
             case .like:
                 color = UIColor(hexString: "#6FBE49")!
                 title = "Thích"
+                summaryIcon = summaryImageWithType(.like)
+                break
+            case .whitelike:
+                color = UIColor(hexString: "#6FBE49")!
+                title = "Thích"
+                icon = imageWithType(.like)
                 summaryIcon = summaryImageWithType(.like)
                 break
             case .love:
@@ -96,23 +105,13 @@ extension Reaction {
                 color = UIColor(hexString: "#5168D7")!
                 title = "Giận"
                 break
-            case .pikachu:
-                color = UIColor(r: 167, g: 130, b: 189)
-                title = "Pikachu"
-                icon = UIImage.gifImageWithName("pikachu")
-                break
-            case .pinwheel:
-                color = UIColor(r: 167, g: 130, b: 189)
-                title = "Pinwheel"
-                icon = UIImage.apngImageWithName("pinwheel")
-                alterIcon = UIImage.apngImageWithName("pinwheel")
             }
             
             return Reaction(id: type.rawValue,
                             title: title,
                             color: color,
                             icon: icon ?? imageWithType(type)!,
-                            alternativeIcon: alterIcon ?? alterImageWithType(type),
+                            alternativeIcon: alterImageWithType(type),
                             summaryIcon: summaryIcon ?? summaryImageWithType(type))
         }
         
@@ -145,6 +144,8 @@ extension Reaction {
             return 1
         case .like:
             return 1
+        case .whitelike:
+            return 1
         case .love:
             return 2
         case .haha:
@@ -155,8 +156,6 @@ extension Reaction {
             return 5
         case .angry:
             return 6
-        default:
-            return -1
         }
     }
     
