@@ -30,16 +30,23 @@ public extension Reactive where Base: ReactionButton {
 
 public extension ReactionButton {
     // MARK: convenience method
-    static func gapo() -> ReactionButton {
+    static func gapo(selectorBackground: UIColor = .white,
+                     selectorList: [Reaction] = Reaction.gapo.all) -> ReactionButton {
         let reactionSelector = ReactionSelector()
         reactionSelector.config = ReactionSelectorConfig {
             $0.iconSize = 40
+            $0.backgroundColor = selectorBackground
         }
-        reactionSelector.reactions = Reaction.gapo.all
+        reactionSelector.reactions = selectorList
         let reactionButton = ReactionButton()
         reactionButton.reactionSelector = reactionSelector
         reactionButton.config = ReactionButtonConfig() { $0.alignment = .centerLeft }
         return reactionButton
+    }
+    
+    static func darkMode() -> ReactionButton {
+        return gapo(selectorBackground: UIColor.init(r: 26, g: 26, b: 26, a: 0.7),
+                    selectorList: Reaction.gapo.dark)
     }
 }
 
