@@ -32,10 +32,12 @@ class ViewController: UIViewController {
         }
         
         reactionButton.addTarget(self, action: #selector(handleTapButton(_:)), for: .touchUpInside)
-        reactionButton.rx.reaction.subscribe(onNext: { (reaction) in
+        reactionButton.observeReaction() => disposeBag
+        reactionButton.didUpdateReaction = { [weak self] reaction in
+            guard let self = self else { return }
             NSLog("react-status: %@", self.reactionButton.reaction.getReactStatus())
             NSLog("react-code: %d", reaction?.getRequestCode() ?? -1)
-        }) => disposeBag
+        }
         
         let reactionSummary = ReactionSummary()
         reactionSummary.reactions = Reaction.gapo.main
