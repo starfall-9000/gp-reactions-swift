@@ -43,6 +43,7 @@ public final class ReactionButton: UIReactionControl {
 
     $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ReactionButton.dismissReactionSelector)))
   }
+  public var didTapButton: ((_ sender: ReactionButton) -> Void)? = nil
 
   /**
    A Boolean value indicating whether the reaction button is in the selected state.
@@ -108,24 +109,28 @@ public final class ReactionButton: UIReactionControl {
     titleLabel.font     = config.font
     titleLabel.text     = reaction.title
 
-    let iconSize   = min(bounds.width - config.spacing, bounds.height) - config.iconMarging * 2
-    let titleSize  = titleLabel.sizeThatFits(CGSize(width: bounds.width - iconSize, height: bounds.height))
+    let configSpacing = (config.hideIcon || config.hideTitle) ? 0 : config.spacing
+    let iconSize   = config.hideIcon ? 0
+                        : min(bounds.width - configSpacing, bounds.height) - config.iconMarging * 2
+    let titleSize  = config.hideTitle ? CGSize.zero
+                        : titleLabel.sizeThatFits(CGSize(width: bounds.width - iconSize,
+                                                         height: bounds.height))
     var iconFrame  = CGRect(x: 0, y: (bounds.height - iconSize) / 2, width: iconSize, height: iconSize)
-    var titleFrame = CGRect(x: iconSize + config.spacing, y: 0, width: titleSize.width, height: bounds.height)
+    var titleFrame = CGRect(x: iconSize + configSpacing, y: 0, width: titleSize.width, height: bounds.height)
 
     if config.alignment == .right {
       iconFrame.origin.x  = bounds.width - iconSize
-      titleFrame.origin.x = bounds.width - iconSize - config.spacing - titleSize.width
+      titleFrame.origin.x = bounds.width - iconSize - configSpacing - titleSize.width
     }
     else if config.alignment == .centerLeft || config.alignment == .centerRight {
-      let emptyWidth = bounds.width - iconFrame.width - titleLabel.bounds.width - config.spacing
+      let emptyWidth = bounds.width - iconFrame.width - titleLabel.bounds.width - configSpacing
 
       if config.alignment == .centerLeft {
         iconFrame.origin.x  = emptyWidth / 2
-        titleFrame.origin.x = emptyWidth / 2 + iconSize + config.spacing
+        titleFrame.origin.x = emptyWidth / 2 + iconSize + configSpacing
       }
       else {
-        iconFrame.origin.x  = emptyWidth / 2 + titleSize.width + config.spacing
+        iconFrame.origin.x  = emptyWidth / 2 + titleSize.width + configSpacing
         titleFrame.origin.x = emptyWidth / 2
       }
     }
@@ -156,6 +161,7 @@ public final class ReactionButton: UIReactionControl {
     }
 
     sendActions(for: .touchUpInside)
+    didTapButton?(self)
   }
 
   private var isLongPressMoved = false
@@ -251,16 +257,19 @@ public final class ReactionButton: UIReactionControl {
       selector.center = centerPoint
     }
 
-    if selector.frame.origin.x - config.spacing < 0 {
-      selector.center = CGPoint(x: selector.center.x - selector.frame.origin.x + config.spacing, y: centerPoint.y)
+    if selector.frame.origin.x - config.safeSelectorMargin < 0 {
+      selector.center = CGPoint(x: selector.center.x - selector.frame.origin.x + config.safeSelectorMargin, y: centerPoint.y)
     }
-    else if selector.frame.origin.x + selector.frame.width + config.spacing > overlay.bounds.width {
-      selector.center = CGPoint(x: selector.center.x - (selector.frame.origin.x + selector.frame.width + config.spacing - overlay.bounds.width), y: centerPoint.y)
+    else if selector.frame.origin.x + selector.frame.width + config.safeSelectorMargin > overlay.bounds.width {
+      selector.center = CGPoint(x: selector.center.x - (selector.frame.origin.x + selector.frame.width + config.safeSelectorMargin - overlay.bounds.width), y: centerPoint.y)
     }
 
     selector.feedback = feedback
-
-    animateOverlay(alpha: 1, center: CGPoint(x: overlay.bounds.midX, y: overlay.bounds.midY - selector.bounds.height))
+    if selector.frame.origin.y - config.safeSelectorMargin < 0 {
+        animateOverlay(alpha: 1, center: CGPoint(x: overlay.bounds.midX, y: overlay.bounds.midY + selector.bounds.height + bounds.height))
+    } else {
+        animateOverlay(alpha: 1, center: CGPoint(x: overlay.bounds.midX, y: overlay.bounds.midY - selector.bounds.height))
+    }
   }
 
   private func animateOverlay(alpha: CGFloat, center: CGPoint) {

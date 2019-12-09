@@ -14,7 +14,7 @@ PODS:
     - PureLayout
     - RxCocoa
     - RxSwift
-  - GPReactions (0.0.4):
+  - GPReactions (0.0.7):
     - DTMvvm
     - Reactions
   - Moya (13.0.1):
@@ -24,7 +24,7 @@ PODS:
     - Result (~> 4.1)
   - ObjectMapper (3.5.1)
   - PureLayout (3.1.4)
-  - Reactions (3.0.4)
+  - Reactions (3.0.7)
   - Result (4.1.0)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
@@ -38,7 +38,7 @@ DEPENDENCIES:
   - Reactions (from `https://github.com/starfall-9000/Reactions.git`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Action
     - Alamofire
     - AlamofireImage
@@ -59,7 +59,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Reactions:
-    :commit: 96ac1d708cc6038f74e66d48165a6ddebc53703f
+    :commit: dfbfa224838e8bc3ab6bd14bde0e5894d0f61dae
     :git: https://github.com/starfall-9000/Reactions.git
 
 SPEC CHECKSUMS:
@@ -67,11 +67,11 @@ SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   DTMvvm: bd58255e6d8b0d5297b8c22366f7c42d30ee17cc
-  GPReactions: 524b34f50f9bd36ee6b7a65e04b0ae836c82c100
+  GPReactions: c2e97c4ce7aac5dd99a19f47c9aa5018bf46c39e
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
-  Reactions: 9323dab9e9c916b1903a900abad3693b0bca62dc
+  Reactions: b258669569cba667dcbfc8bf93fc53fe6d20bc97
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
@@ -79,4 +79,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2330d794073136771050383a698567fd732df34f
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

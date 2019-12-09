@@ -1,6 +1,6 @@
 {
   "name": "GPReactions",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "summary": "Useful reactions swift library such as like, love,...",
   "description": "Useful reactions library using for like, love,... written by swift",
   "homepage": "https://github.com/starfall-9000/gp-reactions-swift.git",
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/starfall-9000/gp-reactions-swift",
-    "tag": "0.0.4"
+    "tag": "0.0.7"
   },
   "swift_versions": "5",
   "source_files": [

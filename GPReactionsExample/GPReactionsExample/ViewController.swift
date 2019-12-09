@@ -13,7 +13,7 @@ import RxSwift
 import DTMvvm
 
 class ViewController: UIViewController {
-    let reactionButton = ReactionButton.gapo()
+    let reactionButton = ReactionButton.darkMode()
     var disposeBag: DisposeBag? = nil
     
     override func viewDidLoad() {
@@ -23,8 +23,13 @@ class ViewController: UIViewController {
         
         view.addSubview(reactionButton)
         reactionButton.autoPinEdge(toSuperviewEdge: .top, withInset: 200)
-        reactionButton.autoAlignAxis(toSuperviewAxis: .vertical)
-        reactionButton.autoSetDimensions(to: .init(width: 100, height: 40))
+        reactionButton.autoPinEdge(toSuperviewEdge: .right, withInset: 40)
+        reactionButton.autoSetDimensions(to: .init(width: 40, height: 40))
+        reactionButton.config = ReactionButtonConfig {
+            $0.alignment = .centerLeft
+            $0.hideTitle = true
+            $0.safeSelectorMargin = 40
+        }
         
         reactionButton.addTarget(self, action: #selector(handleTapButton(_:)), for: .touchUpInside)
         reactionButton.rx.reaction.subscribe(onNext: { (reaction) in
@@ -50,7 +55,7 @@ class ViewController: UIViewController {
     
     @objc func handleTapButton(_ sender: ReactionButton) {
         if reactionButton.isSelected == false {
-            reactionButton.reaction = Reaction.gapo.unlike
+            reactionButton.reaction = Reaction.gapo.whiteLike
         } else {
             reactionButton.reaction = Reaction.gapo.like
         }
