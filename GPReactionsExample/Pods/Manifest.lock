@@ -59,7 +59,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Reactions:
-    :commit: dfbfa224838e8bc3ab6bd14bde0e5894d0f61dae
+    :commit: 391390d91c74919012e3e063e02f427767f344fa
     :git: https://github.com/starfall-9000/Reactions.git
 
 SPEC CHECKSUMS:
